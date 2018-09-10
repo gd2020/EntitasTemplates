@@ -1,0 +1,13 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Entitas;
+
+
+public class #SCRIPTNAME# : IInitializeSystem  {
+
+	public void Initialize() {
+		// Initialization code here
+	}		
+}
+

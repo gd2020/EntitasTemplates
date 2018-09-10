@@ -1,0 +1,43 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Entitas;
+
+
+public class #SCRIPTNAME# : ReactiveSystem<MyContextEntity> {
+	public MyReactiveSystem (Contexts contexts) : base(contexts.MyContext) {
+		// pass the context of interest to the base constructor
+	}
+		
+	protected override ICollector<MyContextEntity> GetTrigger(IContext<MyContextEntity> context) {
+		// specify which component you are reacting to
+		// return context.CreateCollector(MyContextMatcher.MyComponent);
+
+		// you can also specify which type of event you need to react to
+
+		// return context.CreateCollector(MyContextMatcher.MyComponent.Added()); // the default
+		// return context.CreateCollector(MyContextMatcher.MyComponent.Removed());
+		// return context.CreateCollector(MyContextMatcher.MyComponent.AddedOrRemoved());
+
+		// combine matchers with AnyOf and AllOf
+		// return context.CreateCollector(LevelMatcher.AnyOf(MyContextMatcher.Component1, MyContextMatcher.Component2));
+
+		// use multiple matchers
+		// return context.CreateCollector(LevelMatcher.MyContextMatcher, MyContextMatcher.Component2.Removed());
+
+		// or any combination of all the above
+		// return context.CreateCollector(LevelMatcher.AnyOf(MyContextMatcher.Component1, MyContextMatcher.Component2),
+		//                                LevelMatcher.Component3.Removed(),
+		//                                LevelMatcher.AllOf(MyContextMatcher.C4, MyContextMatcher.C5).Added());
+	}
+		
+	protected override bool Filter(MyContextEntity entity) {
+		// check for required components
+	}
+
+	protected override void Execute(List<MyContextEntity> entities) {
+		foreach (var e in entities) {
+			// do stuff to the matched entities
+		}
+	}
+}
